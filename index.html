@@ -13,8 +13,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 8px;
+            background:
+                radial-gradient(circle at top, rgba(255,255,255,0.22), transparent 34%),
+                linear-gradient(135deg, #34568b 0%, #243b55 100%);
+            padding: 12px;
             min-height: 100vh;
             direction: rtl;
             overflow-x: hidden;
@@ -25,8 +27,9 @@
             width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 12px;
+            box-shadow: 0 24px 70px rgba(0,0,0,0.34);
             overflow: hidden;
         }
 
@@ -38,8 +41,8 @@
 
         .input-section h2 {
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 12px;
+            font-size: 22px;
             font-weight: bold;
         }
 
@@ -51,15 +54,15 @@
             display: block;
             margin-bottom: 6px;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 17px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 7px 10px;
+            padding: 11px 12px;
             border: none;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 18px;
             direction: rtl;
             text-align: right;
             transition: all 0.3s ease;
@@ -73,12 +76,12 @@
 
         .print-button {
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             background: #2ecc71;
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -96,44 +99,60 @@
         }
 
         .document-section {
-            padding: 16px;
-            background: white;
+            padding: 18px;
+            background: #f3f6f8;
             position: relative;
         }
 
         .document-border {
-            border: 2px solid #2c3e50;
-            padding: 18px;
+            border: 4px double #1f3f5b;
+            padding: 24px;
             position: relative;
-            background: #fafafa;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,252,253,0.98)),
+                #ffffff;
+            box-shadow:
+                inset 0 0 0 1px #d7e1e8,
+                inset 0 0 0 8px #ffffff,
+                0 10px 28px rgba(31, 63, 91, 0.16);
         }
 
         .document-border::before {
             content: '';
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid #95a5a6;
+            inset: 12px;
+            border: 1px solid #8aa1b3;
+            pointer-events: none;
+        }
+
+        .document-border::after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            border-top: 3px solid #1f7a4f;
+            border-bottom: 3px solid #1f7a4f;
+            opacity: 0.28;
             pointer-events: none;
         }
 
         .document-header {
             text-align: center;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
-            border-bottom: 2px double #2c3e50;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 3px double #1f3f5b;
+            position: relative;
+            z-index: 1;
         }
 
         .document-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 26px;
+            font-weight: 900;
+            color: #163247;
             margin-bottom: 10px;
             text-decoration: underline;
-            text-decoration-color: #3498db;
+            text-decoration-color: #1f7a4f;
             text-underline-offset: 8px;
+            text-decoration-thickness: 2px;
         }
 
         .document-logo {
@@ -152,77 +171,85 @@
         }
 
         .document-content {
-            line-height: 1.65;
-            font-size: 14px;
-            color: #2c3e50;
+            line-height: 1.85;
+            font-size: 19px;
+            color: #182f42;
             overflow-wrap: anywhere;
             word-break: break-word;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         .greeting {
-            margin-bottom: 10px;
-            font-size: 15px;
+            margin-bottom: 12px;
+            font-size: 20px;
         }
 
         /* النص الغامق بدل التظليل */
         .bold-value {
             font-weight: 900;
-            color: #1a1a1a;
+            color: #071923;
             font-size: 1.05em;
             text-decoration: underline;
-            text-decoration-color: #2c3e50;
-            text-underline-offset: 3px;
+            text-decoration-color: #1f7a4f;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
         }
 
         .intro-text {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             text-align: justify;
-            line-height: 1.7;
+            line-height: 1.9;
         }
 
         .details-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #2c3e50;
+            font-weight: 900;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #163247;
         }
 
         .detail-item {
-            margin-bottom: 8px;
-            padding-right: 15px;
+            margin-bottom: 10px;
+            padding-right: 20px;
             position: relative;
-            line-height: 1.65;
+            line-height: 1.85;
         }
 
         .detail-item::before {
             content: '◆';
             position: absolute;
             right: 0;
-            color: #3498db;
+            color: #1f7a4f;
             font-weight: bold;
         }
 
         .detail-label {
-            font-weight: bold;
-            color: #2c3e50;
+            font-weight: 900;
+            color: #102f46;
         }
 
         .note-section {
-            background: #fff3cd;
-            border-right: 4px solid #ffc107;
-            padding: 10px 12px;
-            margin: 12px 0;
-            border-radius: 5px;
+            background: #fff8db;
+            border-right: 6px solid #c99619;
+            padding: 14px 16px;
+            margin: 14px 0;
+            border-radius: 7px;
+            box-shadow: inset 0 0 0 1px rgba(201, 150, 25, 0.22);
+            font-size: 19px;
+            line-height: 1.8;
         }
 
         .note-section strong {
-            color: #856404;
+            color: #704b00;
+            font-weight: 900;
         }
 
         .document-footer {
-            margin-top: 8px;
-            padding-top: 6px;
-            border-top: 2px solid #bdc3c7;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 2px solid #9dafbb;
             position: relative;
         }
 
@@ -244,21 +271,21 @@
         .regards {
             font-weight: bold;
             margin-bottom: 6px;
-            font-size: 14px;
+            font-size: 18px;
             text-align: center;
             width: 100%;
         }
 
         .signature-name {
             font-weight: bold;
-            font-size: 13px;
+            font-size: 16px;
             color: #2c3e50;
             margin-bottom: 5px;
         }
 
         .signature-title {
             color: #7f8c8d;
-            font-size: 11px;
+            font-size: 14px;
         }
 
         .handwritten-signature {
@@ -329,18 +356,23 @@
 
             .document-section {
                 padding: 2mm;
+                background: white;
             }
 
             .document-border {
                 padding: 6mm;
-                border-width: 1.5px;
+                border-width: 2px;
+                box-shadow: none;
             }
 
             .document-border::before {
-                top: 3mm;
-                left: 3mm;
-                right: 3mm;
-                bottom: 3mm;
+                inset: 3mm;
+            }
+
+            .document-border::after {
+                inset: 4.5mm;
+                border-top-width: 1.5px;
+                border-bottom-width: 1.5px;
             }
 
             .document-header {
@@ -355,23 +387,23 @@
             }
 
             .document-title {
-                font-size: 14px;
+                font-size: 16px;
                 margin-bottom: 3mm;
                 text-underline-offset: 4px;
             }
 
             .document-content {
-                font-size: 10px;
-                line-height: 1.35;
+                font-size: 11.5px;
+                line-height: 1.42;
             }
 
             .greeting {
-                font-size: 10.5px;
+                font-size: 12px;
                 margin-bottom: 2mm;
             }
 
             .bold-value {
-                font-size: 10.5px;
+                font-size: 1.05em;
             }
 
             .intro-text {
@@ -380,7 +412,7 @@
             }
 
             .details-title {
-                font-size: 10.5px;
+                font-size: 12px;
                 margin-bottom: 2mm;
             }
 
@@ -388,14 +420,14 @@
                 margin-bottom: 1.5mm;
                 padding-right: 10px;
                 line-height: 1.35;
-                font-size: 10px;
+                font-size: 11.5px;
             }
 
             .note-section {
                 padding: 2mm 3mm;
                 margin: 2mm 0;
                 border-right-width: 3px;
-                font-size: 10px;
+                font-size: 11.5px;
                 line-height: 1.35;
             }
 
@@ -414,7 +446,7 @@
 
             .regards {
                 margin-bottom: 1mm;
-                font-size: 10px;
+                font-size: 11.5px;
             }
 
             .handwritten-signature {
@@ -433,12 +465,12 @@
             }
 
             .signature-name {
-                font-size: 9px;
+                font-size: 10px;
                 margin-bottom: 1mm;
             }
 
             .signature-title {
-                font-size: 8px;
+                font-size: 9px;
             }
         }
 
@@ -484,22 +516,26 @@
             }
 
             .document-section {
-                padding: 6px;
+                padding: 8px;
             }
 
             .document-border {
                 width: 100%;
                 max-width: 100%;
-                padding: 10px;
+                padding: 16px 12px;
                 overflow: hidden;
             }
 
             .document-border::before {
-                inset: 6px;
+                inset: 7px;
+            }
+
+            .document-border::after {
+                inset: 11px;
             }
 
             .document-title {
-                font-size: 20px;
+                font-size: 24px;
             }
 
             .document-logo {
@@ -508,8 +544,8 @@
             }
 
             .document-content {
-                font-size: 15px;
-                line-height: 1.75;
+                font-size: 18px;
+                line-height: 1.85;
                 max-width: 100%;
                 overflow-wrap: anywhere;
                 word-break: break-word;
@@ -525,23 +561,23 @@
             }
 
             .greeting {
-                font-size: 16px;
+                font-size: 19px;
             }
 
             .details-title {
-                font-size: 16px;
+                font-size: 19px;
             }
 
             .detail-item {
-                line-height: 1.75;
-                margin-bottom: 8px;
-                font-size: 15px;
+                line-height: 1.85;
+                margin-bottom: 10px;
+                font-size: 18px;
             }
 
             .note-section {
-                padding: 10px;
-                margin: 10px 0;
-                font-size: 15px;
+                padding: 12px;
+                margin: 12px 0;
+                font-size: 18px;
             }
 
             .signature-section {
@@ -587,44 +623,44 @@
 
             .regards {
                 margin-bottom: 4px;
-                font-size: 13px;
+                font-size: 16px;
             }
 
             .signature-name {
-                font-size: 12px;
+                font-size: 14px;
             }
 
             .signature-title {
-                font-size: 10px;
+                font-size: 12px;
             }
         }
 
         /* شاشات صغيرة جداً */
         @media (max-width: 380px) {
             .document-border {
-                padding: 8px;
+                padding: 14px 10px;
             }
 
             .document-title {
-                font-size: 17px;
+                font-size: 21px;
             }
 
             .document-content {
-                font-size: 13px;
-                line-height: 1.65;
+                font-size: 16px;
+                line-height: 1.75;
             }
 
             .greeting,
             .details-title {
-                font-size: 14px;
+                font-size: 17px;
             }
 
             .detail-item {
-                font-size: 13px;
+                font-size: 16px;
             }
 
             .note-section {
-                font-size: 13px;
+                font-size: 16px;
             }
 
             .document-logo {
