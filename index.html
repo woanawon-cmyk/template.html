@@ -304,7 +304,7 @@
         @media print {
             @page {
                 size: A4;
-                margin: 7mm;
+                margin: 4mm;
             }
 
             body {
@@ -327,52 +327,99 @@
             }
 
             .document-border {
-                padding: 12px;
-                border-width: 1.5px;
+                padding: 8px;
+                border-width: 1px;
             }
 
             .document-header {
-                margin-bottom: 10px;
-                padding-bottom: 8px;
+                margin-bottom: 6px;
+                padding-bottom: 5px;
             }
 
             .document-logo {
-                width: 58px;
-                height: 58px;
+                width: 44px;
+                height: 44px;
+                margin-bottom: 5px;
             }
 
             .document-title {
-                font-size: 16px;
+                font-size: 13px;
+                margin-bottom: 5px;
+                text-underline-offset: 4px;
             }
 
             .document-content {
-                font-size: 10.5px;
-                line-height: 1.35;
+                font-size: 8.8px;
+                line-height: 1.22;
+            }
+
+            .greeting,
+            .details-title {
+                font-size: 9.5px;
             }
 
             .intro-text,
             .detail-item,
             .note-section,
             .greeting {
-                margin-bottom: 6px;
+                margin-bottom: 3px;
+            }
+
+            .intro-text,
+            .detail-item {
+                line-height: 1.24;
+            }
+
+            .detail-item {
+                padding-right: 10px;
             }
 
             .note-section {
-                padding: 7px 9px;
+                padding: 4px 6px;
+                margin: 5px 0;
+                border-right-width: 3px;
             }
 
             .document-footer {
-                margin-top: 10px;
-                padding-top: 8px;
+                margin-top: 4px;
+                padding-top: 4px;
+            }
+
+            .signature-section {
+                margin-top: 2px;
+            }
+
+            .signature-box {
+                margin: 1px;
+            }
+
+            .regards {
+                margin-bottom: 2px;
+                font-size: 9px;
+            }
+
+            .handwritten-signature {
+                width: 95px;
+                height: 24px;
             }
 
             .official-stamp {
-                width: 76px;
-                height: 76px;
+                width: 48px;
+                height: 48px;
             }
 
             .signature-line {
-                width: 130px;
+                width: 95px;
+                margin: 1px auto;
+            }
+
+            .signature-name {
+                font-size: 8.8px;
+                margin-bottom: 2px;
+            }
+
+            .signature-title {
+                font-size: 7.8px;
             }
 
             .print-button {
