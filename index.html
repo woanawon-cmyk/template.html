@@ -30,7 +30,6 @@
             overflow: hidden;
         }
 
-        /* قسم الإدخال */
         .input-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 12px;
@@ -72,7 +71,6 @@
             transform: translateY(-2px);
         }
 
-        /* زر الطباعة */
         .print-button {
             width: 100%;
             padding: 8px;
@@ -97,14 +95,12 @@
             transform: translateY(0);
         }
 
-        /* قسم المستند */
         .document-section {
             padding: 16px;
             background: white;
             position: relative;
         }
 
-        /* إطار المستند */
         .document-border {
             border: 2px solid #2c3e50;
             padding: 18px;
@@ -123,7 +119,6 @@
             pointer-events: none;
         }
 
-        /* رأس المستند */
         .document-header {
             text-align: center;
             margin-bottom: 14px;
@@ -141,7 +136,6 @@
             text-underline-offset: 8px;
         }
 
-        /* شعار البنك المركزي السعودي */
         .document-logo {
             width: 70px;
             height: 70px;
@@ -157,7 +151,6 @@
             object-fit: contain;
         }
 
-        /* محتوى المستند */
         .document-content {
             line-height: 1.65;
             font-size: 14px;
@@ -171,12 +164,14 @@
             font-size: 15px;
         }
 
-        .highlight {
-            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-            padding: 1px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #2c3e50;
+        /* النص الغامق بدل التظليل */
+        .bold-value {
+            font-weight: 900;
+            color: #1a1a1a;
+            font-size: 1.05em;
+            text-decoration: underline;
+            text-decoration-color: #2c3e50;
+            text-underline-offset: 3px;
         }
 
         .intro-text {
@@ -224,7 +219,6 @@
             color: #856404;
         }
 
-        /* التذييل */
         .document-footer {
             margin-top: 8px;
             padding-top: 6px;
@@ -267,7 +261,6 @@
             font-size: 11px;
         }
 
-        /* التوقيع على شكل خربشة */
         .handwritten-signature {
             width: 130px;
             height: 34px;
@@ -279,7 +272,6 @@
             height: 100%;
         }
 
-        /* ختم البنك المركزي */
         .official-stamp {
             position: relative;
             width: 62px;
@@ -293,146 +285,168 @@
             opacity: 0.85;
         }
 
-        /* خط تحت التوقيع */
         .signature-line {
             border-top: 2px solid #2c3e50;
             width: 130px;
             margin: 3px auto 3px;
         }
 
-        /* طباعة */
+        /* طباعة - صفحة واحدة */
         @media print {
             @page {
                 size: A4;
-                margin: 4mm;
+                margin: 5mm;
+            }
+
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                overflow: hidden;
             }
 
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
             }
 
-            .input-section {
-                display: none;
+            .input-section,
+            .print-button {
+                display: none !important;
             }
 
             .container {
                 box-shadow: none;
                 border-radius: 0;
                 max-width: 100%;
+                width: 100%;
+                height: auto;
+                max-height: 285mm;
+                overflow: hidden;
+                page-break-inside: avoid;
+                page-break-after: avoid;
             }
 
             .document-section {
-                padding: 0;
+                padding: 2mm;
             }
 
             .document-border {
-                padding: 8px;
-                border-width: 1px;
+                padding: 6mm;
+                border-width: 1.5px;
+            }
+
+            .document-border::before {
+                top: 3mm;
+                left: 3mm;
+                right: 3mm;
+                bottom: 3mm;
             }
 
             .document-header {
-                margin-bottom: 6px;
-                padding-bottom: 5px;
+                margin-bottom: 4mm;
+                padding-bottom: 3mm;
             }
 
             .document-logo {
-                width: 44px;
-                height: 44px;
-                margin-bottom: 5px;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 3mm;
             }
 
             .document-title {
-                font-size: 13px;
-                margin-bottom: 5px;
+                font-size: 14px;
+                margin-bottom: 3mm;
                 text-underline-offset: 4px;
             }
 
             .document-content {
-                font-size: 8.8px;
-                line-height: 1.22;
+                font-size: 10px;
+                line-height: 1.35;
             }
 
-            .greeting,
-            .details-title {
-                font-size: 9.5px;
-            }
-
-            .intro-text,
-            .detail-item,
-            .note-section,
             .greeting {
-                margin-bottom: 3px;
+                font-size: 10.5px;
+                margin-bottom: 2mm;
             }
 
-            .intro-text,
-            .detail-item {
-                line-height: 1.24;
+            .bold-value {
+                font-size: 10.5px;
+            }
+
+            .intro-text {
+                margin-bottom: 2mm;
+                line-height: 1.35;
+            }
+
+            .details-title {
+                font-size: 10.5px;
+                margin-bottom: 2mm;
             }
 
             .detail-item {
+                margin-bottom: 1.5mm;
                 padding-right: 10px;
+                line-height: 1.35;
+                font-size: 10px;
             }
 
             .note-section {
-                padding: 4px 6px;
-                margin: 5px 0;
+                padding: 2mm 3mm;
+                margin: 2mm 0;
                 border-right-width: 3px;
+                font-size: 10px;
+                line-height: 1.35;
             }
 
             .document-footer {
-                margin-top: 4px;
-                padding-top: 4px;
+                margin-top: 3mm;
+                padding-top: 2mm;
             }
 
             .signature-section {
-                margin-top: 2px;
+                margin-top: 2mm;
             }
 
             .signature-box {
-                margin: 1px;
+                margin: 1mm;
             }
 
             .regards {
-                margin-bottom: 2px;
-                font-size: 9px;
+                margin-bottom: 1mm;
+                font-size: 10px;
             }
 
             .handwritten-signature {
-                width: 95px;
-                height: 24px;
+                width: 100px;
+                height: 26px;
             }
 
             .official-stamp {
-                width: 48px;
-                height: 48px;
+                width: 50px;
+                height: 50px;
             }
 
             .signature-line {
-                width: 95px;
-                margin: 1px auto;
+                width: 100px;
+                margin: 1mm auto;
             }
 
             .signature-name {
-                font-size: 8.8px;
-                margin-bottom: 2px;
+                font-size: 9px;
+                margin-bottom: 1mm;
             }
 
             .signature-title {
-                font-size: 7.8px;
-            }
-
-            .print-button {
-                display: none;
+                font-size: 8px;
             }
         }
 
         /* الهاتف المحمول */
         @media (max-width: 768px) {
-            html,
-            body {
+            html, body {
                 width: 100%;
-                max-width: 100%;
+                max-width: 100vw;
                 overflow-x: hidden;
             }
 
@@ -442,7 +456,7 @@
 
             .container {
                 width: 100%;
-                max-width: none;
+                max-width: 100vw;
                 border-radius: 8px;
                 overflow-x: hidden;
             }
@@ -452,13 +466,21 @@
             }
 
             .input-section h2 {
-                font-size: 19px;
+                font-size: 18px;
             }
 
-            .form-group label,
-            .form-group input,
+            .form-group label {
+                font-size: 14px;
+            }
+
+            .form-group input {
+                font-size: 16px;
+                padding: 10px;
+            }
+
             .print-button {
                 font-size: 16px;
+                padding: 12px;
             }
 
             .document-section {
@@ -477,12 +499,17 @@
             }
 
             .document-title {
-                font-size: 22px;
+                font-size: 20px;
+            }
+
+            .document-logo {
+                width: 65px;
+                height: 65px;
             }
 
             .document-content {
-                font-size: 17px;
-                line-height: 1.85;
+                font-size: 15px;
+                line-height: 1.75;
                 max-width: 100%;
                 overflow-wrap: anywhere;
                 word-break: break-word;
@@ -491,31 +518,30 @@
             .document-content *,
             .detail-item,
             .intro-text,
-            .note-section,
-            .highlight {
+            .note-section {
                 max-width: 100%;
                 overflow-wrap: anywhere;
                 word-break: break-word;
             }
 
-            .greeting,
+            .greeting {
+                font-size: 16px;
+            }
+
             .details-title {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .detail-item {
-                line-height: 1.85;
-                margin-bottom: 10px;
+                line-height: 1.75;
+                margin-bottom: 8px;
+                font-size: 15px;
             }
 
             .note-section {
-                padding: 12px;
-                margin: 12px 0;
-            }
-
-            .document-logo {
-                width: 72px;
-                height: 72px;
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 15px;
             }
 
             .signature-section {
@@ -537,19 +563,19 @@
             }
 
             .official-stamp {
-                width: 58px;
-                height: 58px;
+                width: 55px;
+                height: 55px;
                 max-width: 100%;
             }
 
             .handwritten-signature {
-                width: 120px;
-                height: 32px;
+                width: 110px;
+                height: 30px;
                 max-width: 100%;
             }
 
             .signature-line {
-                width: min(115px, 100%);
+                width: min(110px, 100%);
             }
 
             .document-logo img,
@@ -561,7 +587,63 @@
 
             .regards {
                 margin-bottom: 4px;
+                font-size: 13px;
+            }
+
+            .signature-name {
+                font-size: 12px;
+            }
+
+            .signature-title {
+                font-size: 10px;
+            }
+        }
+
+        /* شاشات صغيرة جداً */
+        @media (max-width: 380px) {
+            .document-border {
+                padding: 8px;
+            }
+
+            .document-title {
+                font-size: 17px;
+            }
+
+            .document-content {
+                font-size: 13px;
+                line-height: 1.65;
+            }
+
+            .greeting,
+            .details-title {
                 font-size: 14px;
+            }
+
+            .detail-item {
+                font-size: 13px;
+            }
+
+            .note-section {
+                font-size: 13px;
+            }
+
+            .document-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .official-stamp {
+                width: 48px;
+                height: 48px;
+            }
+
+            .handwritten-signature {
+                width: 90px;
+                height: 26px;
+            }
+
+            .signature-line {
+                width: min(90px, 100%);
             }
         }
     </style>
@@ -571,7 +653,7 @@
         <!-- قسم الإدخال -->
         <div class="input-section">
             <h2>📝 أدخل البيانات المطلوبة</h2>
-            
+
             <div class="form-group">
                 <label for="nameInput">الاسم الكامل:</label>
                 <input type="text" id="nameInput" placeholder="أدخل الاسم الكامل">
@@ -593,19 +675,16 @@
         <!-- قسم المستند -->
         <div class="document-section">
             <div class="document-border">
-                <!-- رأس المستند -->
                 <div class="document-header">
-                    <!-- شعار البنك المركزي السعودي مع قطعة النقد -->
                     <div class="document-logo">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='greenGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23006C35;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2300923F;stop-opacity:1' /%3E%3C/linearGradient%3E%3CradialGradient id='coinGrad' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23FFA500;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FF8C00;stop-opacity:1' /%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23greenGrad)'/%3E%3Ccircle cx='150' cy='110' r='75' fill='none' stroke='white' stroke-width='3'/%3E%3Ccircle cx='150' cy='110' r='60' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='150' cy='110' r='40' fill='url(%23coinGrad)' stroke='%23DAA520' stroke-width='2'/%3E%3Ccircle cx='150' cy='110' r='35' fill='none' stroke='%23DAA520' stroke-width='1' stroke-dasharray='3,2'/%3E%3Ctext x='150' y='108' font-family='Arial' font-size='18' font-weight='bold' fill='%23006C35' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='150' y='123' font-family='Arial' font-size='10' font-weight='bold' fill='%23006C35' text-anchor='middle'%3ESAR%3C/text%3E%3Cpath id='outerCircle' d='M 150,35 A 75,75 0 1,1 149.99,35' fill='none'/%3E%3Cpath id='innerCircle' d='M 150,50 A 60,60 0 0,0 149.99,50' fill='none'/%3E%3Ctext font-family='Arial' font-size='11' font-weight='bold' fill='white'%3E%3CtextPath href='%23outerCircle' startOffset='50%25' text-anchor='middle'%3E%D8%A7%D9%84%D8%A8%D9%86%D9%83 %D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A %D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%3C/textPath%3E%3C/text%3E%3Ctext font-family='Arial' font-size='9' font-weight='bold' fill='white'%3E%3CtextPath href='%23innerCircle' startOffset='50%25' text-anchor='middle'%3E%D9%84%D8%A7 %D8%A5%D9%84%D9%87 %D8%A5%D9%84%D8%A7 %D8%A7%D9%84%D9%84%D9%87%3C/textPath%3E%3C/text%3E%3Ctext x='150' y='205' font-family='Arial' font-size='13' font-weight='bold' fill='white' text-anchor='middle'%3E%D8%A7%D9%84%D8%A8%D9%86%D9%83 %D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A %D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%3C/text%3E%3Cline x1='60' y1='220' x2='130' y2='220' stroke='white' stroke-width='2'/%3E%3Cline x1='170' y1='220' x2='240' y2='220' stroke='white' stroke-width='2'/%3E%3Ctext x='150' y='240' font-family='Arial' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3ESAMA%3C/text%3E%3Ctext x='150' y='260' font-family='Arial' font-size='10' fill='white' text-anchor='middle'%3ESAUDI CENTRAL BANK%3C/text%3E%3C/svg%3E" alt="شعار البنك المركزي السعودي">
                     </div>
                     <h1 class="document-title">إشعار استلام حوالة مالية دولية</h1>
                 </div>
 
-                <!-- محتوى المستند -->
                 <div class="document-content">
                     <div class="greeting">
-                        عزيزي السيد/ السيدة <span class="highlight" id="displayName">_______________</span>
+                        عزيزي السيد/ السيدة <span class="bold-value" id="displayName">_______________</span>
                     </div>
 
                     <p class="intro-text">
@@ -619,11 +698,11 @@
                     </div>
 
                     <div class="detail-item">
-                        <span class="detail-label">رقم الهاتف:</span> <span class="highlight" id="displayPhone">_______________</span>
+                        <span class="detail-label">رقم الهاتف:</span> <span class="bold-value" id="displayPhone">_______________</span>
                     </div>
 
                     <div class="detail-item">
-                        <span class="detail-label">الدولة:</span> <span class="highlight" id="displayCountry">_______________</span>
+                        <span class="detail-label">الدولة:</span> <span class="bold-value" id="displayCountry">_______________</span>
                     </div>
 
                     <div class="detail-item">
@@ -646,40 +725,33 @@
                         <strong>ملاحظة:</strong> يرجى تأكيد جاهزيتكم لإتمام عملية التحويل خلال الفترة الزمنية المحددة (12 ساعة)، وذلك لنقوم بتزويدكم ببيانات حساب "شام كاش" المعتمد لإرسال الرسوم.
                     </div>
 
-                    <!-- التذييل -->
                     <div class="document-footer">
                         <p class="regards">مع التقدير،</p>
-                        
+
                         <div class="signature-section">
-                            <!-- التوقيع على شكل خربشة مع الاسم -->
                             <div class="signature-box">
                                 <div class="handwritten-signature">
                                     <svg viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
-                                        <!-- الاسم بخط مائل -->
-                                        <text x="110" y="40" 
-                                              font-family="'Brush Script MT', 'Lucida Handwriting', cursive" 
-                                              font-size="26" 
-                                              fill="#1a5490" 
+                                        <text x="110" y="40"
+                                              font-family="'Brush Script MT', 'Lucida Handwriting', cursive"
+                                              font-size="26"
+                                              fill="#1a5490"
                                               text-anchor="middle"
                                               font-weight="bold"
                                               font-style="italic"
                                               transform="rotate(-5 110 40)">
                                             فادي القاضي
                                         </text>
-                                        
-                                        <!-- شحطة فوق الاسم -->
-                                        <path d="M 20 30 Q 110 22, 200 28" 
-                                              stroke="#1a5490" 
-                                              stroke-width="2.5" 
-                                              fill="none" 
+                                        <path d="M 20 30 Q 110 22, 200 28"
+                                              stroke="#1a5490"
+                                              stroke-width="2.5"
+                                              fill="none"
                                               stroke-linecap="round"
                                               opacity="0.85"/>
-                                        
-                                        <!-- نصف دائرة مائلة فوق الشحطة -->
-                                        <path d="M 60 25 Q 110 8, 160 25" 
-                                              stroke="#1a5490" 
-                                              stroke-width="2.2" 
-                                              fill="none" 
+                                        <path d="M 60 25 Q 110 8, 160 25"
+                                              stroke="#1a5490"
+                                              stroke-width="2.2"
+                                              fill="none"
                                               stroke-linecap="round"
                                               opacity="0.8"
                                               transform="rotate(-8 110 20)"/>
@@ -690,7 +762,6 @@
                                 <p class="signature-title">البنك المركزي السعودي</p>
                             </div>
 
-                            <!-- الختم الرسمي -->
                             <div class="signature-box">
                                 <div class="official-stamp">
                                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3CradialGradient id='coinStampGrad' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700;stop-opacity:0.3' /%3E%3Cstop offset='50%25' style='stop-color:%23FFA500;stop-opacity:0.4' /%3E%3Cstop offset='100%25' style='stop-color:%23FF8C00;stop-opacity:0.5' /%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='150' cy='110' r='75' fill='none' stroke='%23006C35' stroke-width='4' opacity='0.7'/%3E%3Ccircle cx='150' cy='110' r='60' fill='none' stroke='%23006C35' stroke-width='2.5' opacity='0.7'/%3E%3Ccircle cx='150' cy='110' r='40' fill='url(%23coinStampGrad)' stroke='%23DAA520' stroke-width='2' opacity='0.6'/%3E%3Ccircle cx='150' cy='110' r='35' fill='none' stroke='%23DAA520' stroke-width='1' stroke-dasharray='3,2' opacity='0.6'/%3E%3Ctext x='150' y='108' font-family='Arial' font-size='18' font-weight='bold' fill='%23006C35' text-anchor='middle' opacity='0.7'%3E1%3C/text%3E%3Ctext x='150' y='123' font-family='Arial' font-size='10' font-weight='bold' fill='%23006C35' text-anchor='middle' opacity='0.7'%3ESAR%3C/text%3E%3Cpath id='outerPath' d='M 150,35 A 75,75 0 1,1 149.99,35' fill='none'/%3E%3Cpath id='innerPath' d='M 150,50 A 60,60 0 0,0 149.99,50' fill='none'/%3E%3Ctext font-family='Arial' font-size='11' font-weight='bold' fill='%23006C35' opacity='0.7'%3E%3CtextPath href='%23outerPath' startOffset='50%25' text-anchor='middle'%3E%D8%A7%D9%84%D8%A8%D9%86%D9%83 %D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A %D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%3C/textPath%3E%3C/text%3E%3Ctext font-family='Arial' font-size='9' font-weight='bold' fill='%23006C35' opacity='0.7'%3E%3CtextPath href='%23innerPath' startOffset='50%25' text-anchor='middle'%3E%D9%84%D8%A7 %D8%A5%D9%84%D9%87 %D8%A5%D9%84%D8%A7 %D8%A7%D9%84%D9%84%D9%87%3C/textPath%3E%3C/text%3E%3Ctext x='150' y='205' font-family='Arial' font-size='13' font-weight='bold' fill='%23006C35' text-anchor='middle' opacity='0.7'%3E%D8%A7%D9%84%D8%A8%D9%86%D9%83 %D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A %D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%3C/text%3E%3Cline x1='60' y1='220' x2='130' y2='220' stroke='%23006C35' stroke-width='2' opacity='0.7'/%3E%3Cline x1='170' y1='220' x2='240' y2='220' stroke='%23006C35' stroke-width='2' opacity='0.7'/%3E%3Ctext x='150' y='240' font-family='Arial' font-size='16' font-weight='bold' fill='%23006C35' text-anchor='middle' opacity='0.7'%3ESAMA%3C/text%3E%3Ctext x='150' y='260' font-family='Arial' font-size='10' fill='%23006C35' text-anchor='middle' opacity='0.7'%3ESAUDI CENTRAL BANK%3C/text%3E%3C/svg%3E" alt="ختم البنك المركزي السعودي">
@@ -705,22 +776,16 @@
     </div>
 
     <script>
-        // تحديث مباشر للاسم
         document.getElementById('nameInput').addEventListener('input', function(e) {
-            const value = e.target.value || '_______________';
-            document.getElementById('displayName').textContent = value;
+            document.getElementById('displayName').textContent = e.target.value || '_______________';
         });
 
-        // تحديث مباشر لرقم الهاتف
         document.getElementById('phoneInput').addEventListener('input', function(e) {
-            const value = e.target.value || '_______________';
-            document.getElementById('displayPhone').textContent = value;
+            document.getElementById('displayPhone').textContent = e.target.value || '_______________';
         });
 
-        // تحديث مباشر للدولة
         document.getElementById('countryInput').addEventListener('input', function(e) {
-            const value = e.target.value || '_______________';
-            document.getElementById('displayCountry').textContent = value;
+            document.getElementById('displayCountry').textContent = e.target.value || '_______________';
         });
     </script>
 </body>
